@@ -1,32 +1,13 @@
 package Arithmetic.Day03.sort.heapSort;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
-public class HeapSortTest
+public class HeapSortVersion2
 {
     public static void main(String[] args)
     {
-        int arr[] = new int[8000000];
-        for (int i = 0; i < 8000000;i++)
-        {
-            arr[i] = (int)(Math.random()*800000);
-        }
-
-        Date date1 = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-        String format1 = simpleDateFormat.format(date1);
-        System.out.println(format1);
-
+        int[] arr = {4,6,8,5,9};
         heapSort(arr);
-
-        Date date2 = new Date();
-        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
-        String format2 = simpleDateFormat2.format(date2);
-        System.out.println(format2);
-        System.out.println("排序结束!!!!");
-
     }
 
     public static void heapSort(int[] arr)
@@ -44,14 +25,15 @@ public class HeapSortTest
         for (int j = arr.length-1;j > 0;j--)
         {
             temp = arr[j];
-            arr[j] = arr[0];
+            arr[j] = arr[0];//调整过后arr[0]是最大值了(大顶堆)
             arr[0] = temp;
             adjustHeap(arr,0,j);
-          //  System.out.println("数组"+ Arrays.toString(arr));
+            System.out.println("数组"+ Arrays.toString(arr));
         }
     }
+
     /**
-     * * 功能: 完成将以 i 为对应的非叶子节点的树调整成大顶堆
+     * 功能: 完成将以 i 为对应的非叶子节点的树调整成大顶堆
      * 举例 int[] arr = {4,6,8,5,9} i=1, 通过adjustHeap 得到 {4,9,8,5,6}
      * 如果再次调用 adjustHeap 传入的是 i=0，得到{4,9,8,5,6} => {9,6,8,5,4}
      * @param arr 待调整的数组
